@@ -17,7 +17,7 @@ const registerRoutes = require('./routes/register');
 const eventRoutes = require('./routes/event');
 
 app.use('/api', registerRoutes);
-app.use('/api', eventRoutes);   // 🔴 THIS LINE IS CRITICAL
+app.use('/api', eventRoutes);  
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
