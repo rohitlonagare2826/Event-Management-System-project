@@ -1,0 +1,87 @@
+.page-box {
+  width: 420px;
+  margin: 80px auto;
+  padding: 25px;
+  border: 2px solid #2c3e50;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.page-box h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input.input-error {
+  border-color: #e74c3c;
+}
+
+.primary {
+  width: 100%;
+  padding: 10px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.primary:hover {
+  background: #1e2f40;
+}
+
+.cancel {
+  margin-top: 8px;
+  width: 100%;
+  background: #777;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.link {
+  margin-top: 12px;
+  color: #1e88e5;
+  cursor: pointer;
+}
+
+.register-box {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #ccc;
+}
+
+/* Error and success messages - matching project theme */
+.error-msg {
+  background: #fdecea;
+  color: #a93226;
+  border: 1px solid #e57373;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.success-msg {
+  background: #eafaf1;
+  color: #1e8449;
+  border: 1px solid #82e0aa;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}

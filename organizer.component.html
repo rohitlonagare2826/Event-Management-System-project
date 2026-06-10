@@ -1,0 +1,74 @@
+<div class="page-box">
+
+  <div class="top-bar">
+    <h2>Organizer Dashboard</h2>
+    <div class="user-info">
+      <span>{{ organizerEmail }}</span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- CREATE EVENT SECTION -->
+  <div class="section">
+    <h3>Create Event</h3>
+
+    <!-- Validation messages -->
+    <div class="error-msg"   *ngIf="formError">{{ formError }}</div>
+    <div class="success-msg" *ngIf="formSuccess">{{ formSuccess }}</div>
+
+    <input
+      [(ngModel)]="title"
+      placeholder="Event Title (min 3 characters)"
+      [class.input-error]="formError && !title.trim()">
+
+    <input
+      type="date"
+      [(ngModel)]="date"
+      [class.input-error]="formError && !date">
+
+    <input
+      [(ngModel)]="venue"
+      placeholder="Venue"
+      [class.input-error]="formError && !venue.trim()">
+
+    <textarea
+      [(ngModel)]="description"
+      placeholder="Description (optional)">
+    </textarea>
+
+    <button class="primary" (click)="createEvent()">Create Event</button>
+  </div>
+
+  <!-- EVENT LIST SECTION -->
+  <div class="section">
+    <h3>My Events</h3>
+
+    <div *ngFor="let e of events; trackBy: trackById" class="event-row">
+      <div class="event-info">
+        <b>{{ e.title }}</b><br>
+        <small>{{ e.date }} | {{ e.venue }}</small><br>
+        {{ e.description }}
+      </div>
+      <div class="event-actions">
+        <button class="secondary" (click)="viewRegistrations(e)">Registrations</button>
+        <button class="danger"    (click)="deleteEvent(e._id)">Delete</button>
+      </div>
+    </div>
+
+    <p *ngIf="events.length === 0" class="empty">No events created yet.</p>
+  </div>
+
+</div>
+
+<!-- REGISTERED USERS PANEL -->
+<div class="reg-box" *ngIf="registrations.length > 0">
+  <h3>Registered Users</h3>
+
+  <div class="reg-card" *ngFor="let r of registrations">
+    <p><b>Name:</b>    {{ r.userName }}</p>
+    <p><b>Contact:</b> {{ r.contact }}</p>
+    <p><b>Class:</b>   {{ r.className }}</p>
+  </div>
+
+  <button class="cancel" (click)="closeRegistrations()">Close</button>
+</div>

@@ -1,0 +1,59 @@
+<div class="page-box">
+
+  <div class="top-bar">
+    <h2>Available Events</h2>
+    <div class="user-info">
+      <span>{{ userEmail }}</span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- EVENTS LIST -->
+  <div *ngIf="events.length > 0; else noEvents">
+    <div *ngFor="let e of events" class="event-card">
+      <h3>{{ e.title }}</h3>
+      <p class="meta">{{ e.date }} | {{ e.venue }}</p>
+      <p>{{ e.description }}</p>
+      <button class="primary" (click)="openRegisterForm(e)">Register</button>
+    </div>
+  </div>
+
+  <ng-template #noEvents>
+    <p class="empty">No events available</p>
+  </ng-template>
+
+  <!-- EVENT REGISTRATION FORM OVERLAY -->
+  <div class="form-overlay" *ngIf="selectedEvent">
+    <div class="form-box">
+
+      <h3>Register for {{ selectedEvent.title }}</h3>
+
+      <!-- Validation messages -->
+      <div class="error-msg"   *ngIf="formError">{{ formError }}</div>
+      <div class="success-msg" *ngIf="formSuccess">{{ formSuccess }}</div>
+
+      <input
+        [(ngModel)]="userName"
+        placeholder="Your Full Name"
+        [class.input-error]="formError && !userName.trim()">
+
+      <input
+        [(ngModel)]="contact"
+        placeholder="Contact Number (10 digits)"
+        maxlength="10"
+        [class.input-error]="formError && !isValidContact(contact)">
+
+      <input
+        [(ngModel)]="className"
+        placeholder="Class (e.g. TY-B)"
+        [class.input-error]="formError && !className.trim()">
+
+      <div class="actions">
+        <button class="primary" (click)="submitRegistration()">Submit</button>
+        <button class="cancel"  (click)="closeForm()">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

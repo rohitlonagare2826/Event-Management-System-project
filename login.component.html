@@ -1,0 +1,54 @@
+<div class="page-box">
+
+  <h2>College Event Management</h2>
+
+  <!-- LOGIN ERROR -->
+  <div class="error-msg" *ngIf="loginError">{{ loginError }}</div>
+
+  <input
+  [(ngModel)]="email"
+  name="email"
+  type="email"
+  placeholder="Email"
+  [class.input-error]="submitted && (!email || !isValidEmail(email))">
+
+<input
+  [(ngModel)]="password"
+  name="password"
+  type="password"
+  placeholder="Password"
+  [class.input-error]="submitted && (!password || !isValidPassword(password))">
+
+  <button class="primary" (click)="login()">Login</button>
+
+  <p class="link" (click)="openRegister()">
+    New user? Register here
+  </p>
+
+  <!-- REGISTER BOX -->
+<div class="register-box" [hidden]="!showRegister">
+      <h3>Create Account</h3>
+
+    <!-- Register messages -->
+    <div class="error-msg"   *ngIf="regError">{{ regError }}</div>
+    <div class="success-msg" *ngIf="regSuccess">{{ regSuccess }}</div>
+
+    <input
+  [(ngModel)]="regEmail"
+  name="regEmail"
+  placeholder="Email"
+  type="email"
+  [class.input-error]="regError">
+
+<input
+  [(ngModel)]="regPassword"
+  name="regPassword"
+  type="password"
+  placeholder="Password (min 6 characters)"
+  [class.input-error]="regError">
+
+    <button class="primary" (click)="register()">Register</button>
+    <button class="cancel"  (click)="showRegister = false">Cancel</button>
+  </div>
+
+</div>
